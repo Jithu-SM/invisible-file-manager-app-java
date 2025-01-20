@@ -1,0 +1,46 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.undercover">
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.BROADCAST_PACKAGE_REPLACED" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
+    <application
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Undercover">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"> <!-- REQUIRED for Android 12 and higher -->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>  <!-- This allows it to be opened via the broadcast -->
+        <activity
+            android:name=".DialerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.DIAL" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="tel" android:host="*1234#" />
+            </intent-filter>
+        </activity>
+
+
+        <!-- Broadcast receiver for the secret dial code -->
+        <receiver
+            android:name=".SecretCodeReceiver"
+            android:exported="true" > <!-- Explicitly set android:exported -->
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SECRET_CODE" />
+                <data android:scheme="android_secret_code" android:host="1234" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

@@ -1,0 +1,14 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/edit_file"
+        android:title="Edit" />
+    <item
+        android:id="@+id/delete_file"
+        android:title="Delete" />
+    <item
+        android:id="@+id/rename_file"
+        android:title="Rename" />
+    <item
+        android:id="@+id/restore_file"
+        android:title="Restore to Device" />
+</menu>

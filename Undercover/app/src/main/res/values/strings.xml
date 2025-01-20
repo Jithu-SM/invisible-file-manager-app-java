@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Undercover</string>
+    <string name="upload_file">Upload File</string>
+    <string name="edit_file">Edit</string>
+    <string name="delete_file">Delete</string>
+    <string name="save">Save</string>
+    <string name="file_content_hint">File content</string>
+</resources>
